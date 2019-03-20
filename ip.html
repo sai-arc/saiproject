@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/animate.css')}}">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/icomoon.css')}}">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css')}}">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/magnific-popup.css')}}">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css')}}">
+	
+	 <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+
+	<!-- Modernizr JS -->
+	<script src="{{url_for('static',filename='js/modernizr-2.6.2.min.js')}}"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="{{url_for('static',filename='js/respond.min.js')}}"></script>
+	<![endif]-->
+	<script src="{{url_for('static',filename='js/val/emailval.js')}}"></script>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+    	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+    
+        $(document).ready(function() {
+            namespace = '/test';
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port + namespace);
+            socket.on('connect', function() {
+                console.log('Websocket connected!')});
+          
+          
+          $('form#emit').submit(function(event) {
+          socket.emit('ButtonAction',{IP: $('#IPs').val(), s_username: $('#s_usernames').val(),s_password:$('#s_passwords').val(),  s_Event: $('#s_Events').val(),s_Match: $('#s_Matchs').val(),s_Venue: $('#s_Venues').val(),s_Videopath: $('#my-file-selector').val(),s_Resolution: $('#company').val(),s_Model: $('#s_Models').val(),s_Gpu: $('#s_Gpus').val()});
+                return false;
+            });
+
+
+           socket.on('someevent', function(msg) {
+           console.log(msg);
+                $('div.bottomleft').append('<br>' + $('<div/>').text('Received #' + msg.number).html());
+            });
+	 
+
+ 	});
+	
+ 
+       
+    	</script>
+
+<style>
+body {
+    font: 400 15px Lato, sans-serif;
+   background:url('/static/img/daniel-olah-728939-unsplash.jpg');
+   min-height:800px;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit button */
+.registerbtn {
+    background-color: #f4511e;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.navbar {
+      margin-bottom: 0;
+      background-color:black;
+      z-index: 9999;
+      border: 0;
+      font-size: 12px !important;
+      line-height: 1.42857143 !important;
+      letter-spacing: 4px;
+      border-radius: 0;
+      font-family: Montserrat, sans-serif;
+  }
+  .navbar li a, .navbar .navbar-brand {
+      color: #fff !important;
+  }
+  .navbar-nav li a:hover, .navbar-nav li.active a {
+      color: #f4511e !important;
+      background-color: #fff !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+      color: #fff !important;
+  }
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #f4511e;
+  }
+.container-fluid {
+      padding: 60px 50px;
+  }
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+.header{
+      padding-top: 30px;
+      padding-bottom: 30px;
+  }
+.margin {margin-bottom: 45px;}
+  .bg-4 { 
+      background-color: #f4511e; /* Black Gray */
+      color: #fff;
+}
+.foot {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+.leftcolumn {   
+    float: left;
+    width:40%;
+    padding-left: 40px;
+    height: 600px;
+	overflow-y:hidden;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width:60%;
+    padding-left: 30px;
+    padding-right: 50px;
+    height: 600px;
+     
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.card {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20px;
+     height: 500px;
+    overflow-y:scroll;
+}
+@media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {   
+        width: 100%;
+        margin-top: 20px;
+        padding: 0;
+    }
+
+
+}
+</style>
+</head>
+<body>
+<div class="header">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#myPage">NANOYOTTA</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="">HOME</a></li>
+        <li><a href="sign.html">Logout</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+<form id="emit" name="config_form" onsubmit="return ValidateIPaddress();" action="{{ url_for('config') }}"  method="POST">
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      
+      
+
+  <div>
+     <div class="form-group col-md-4">
+             
+            <input style="color:#000000" type="text" class="form-control" name ="IP" placeholder="IPaddress" id="IPs"required>
+        </div>
+        <!-- Default input -->
+        <div class="form-group col-md-4">
+          
+            <input style="color:#000000" type="text" class="form-control" name="s_username" id="s_usernames" placeholder="username" required>
+        </div>
+  <div class="form-group col-md-4">
+	<input style="color:#000000" type="password" class="form-control" name="s_password" id="s_passwords" placeholder="password" required>
+    </div>
+ <div class="form-group">
+        
+        <input style="color:#000000" type="text" class="form-control" id="s_Events" name="s_Event" placeholder="Event" required>
+    </div>
+    <!-- Default input -->
+    <div class="form-group">
+       
+        <input style="color:#000000" type="text" class="form-control" id="s_Matchs" name="s_Match" placeholder="Match" required>
+    </div>
+	 <div class="form-group">
+       
+        <input style="color:#000000" type="text" class="form-control"  id="s_Venues" name="s_Venue" placeholder="Venue" required>
+    </div>
+	
+<div class="custom-file">
+<div class=" col-md-6">
+<label class="btn btn-primary btn-md" for="my-file-selector">
+    <a input id="my-file-selector" type="file" style="display:none" 
+    onchange="$('#upload-file-info').html(this.files[0].name)" href="file:///var/www/html/" name="s_Videopath" ></a>
+    Browse
+
+<span class='label label-info' id="upload-file-info"></span>
+</div>
+</div>
+
+
+<div class=" col-md-6">
+        <div class="form-group">
+ 
+    <select id="company" class="form-control" name="s_Resolution" >
+      <option>Resolution</option>
+      <option>1950x1080</option>
+      <option>720x502</option>
+      <option>250x144</option>
+    </select> 
+  </div>
+</div>
+	</br> 
+      
+	 <div class="form-group">
+       
+        <input style="color:#000000" type="text" class="form-control" name="s_Model" id="s_Models" placeholder="Model" required>
+    </div>
+	 <div class="form-group">
+  <!<label class="control-label col-sm-offset-2 col-sm-2" for="company"><!Company</label>
+  
+    <select  class="form-control" name="s_Gpu" id="s_Gpus">
+      <option>GPU</option>
+      <option>0</option>
+      <option>1</option>
+      <option>2</option>
+    </select> 
+  </div>
+    <!-- Grid row -->
+   <div class=" col-md-6">
+    <button type="submit" style="background-color: #f4511e;" class="btn btn-primary btn-md" value="submit">Execute</button>
+
+</div>
+</form>
+
+    </div>
+</div>
+</div>
+  <div class="rightcolumn">
+    <div class="card">
+     <div class="bottomleft">
+	
+</div>
+    </div>
+  </div>
+<p></p>
+<!-- <div> 
+<footer class="foot bg-4 text-center">
+  <p>By <a href="">J</a></p>
+</footer>
+</div>-->
+</body>
+</html>
